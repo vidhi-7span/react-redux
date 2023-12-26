@@ -1,15 +1,13 @@
 import React from "react";
 
-const Home = () => {
+const Home = (props) => {
+  console.warn("Home", props);
   return (
     <div>
-      <div className="add-to-cart">
-        <img
-          src="https://i.pinimg.com/originals/3a/c6/58/3ac658a9b53e3ec59c0968278c56af95.jpg"
-          alt=""
-        />
-      </div>
-      <h1>Home Component</h1>
+      <p>
+        Check the console to see whether the data is getting or not after
+        clicking on the add to cart button
+      </p>
       <div className="cart-wrapper">
         <div className="img-wrapper item">
           <img
@@ -23,7 +21,18 @@ const Home = () => {
           <span>Price: 100/-</span>
         </div>
         <div className="btn-wrapper item">
-          <button>Add to Cart</button>
+          <button
+            onClick={() =>
+              props.addToCartHandler({ price: 100, name: "Frame" })
+            }
+          >
+            Add to Cart
+          </button>
+          <br />
+          <br />
+          <button onClick={() => props.removeToCartHandler()}>
+            Remove to Cart
+          </button>
         </div>
       </div>
     </div>
